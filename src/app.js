@@ -1,4 +1,3 @@
-// Contiene la configuración de express
 import express from 'express';
 
 import swaggerJSDoc from 'swagger-jsdoc';
