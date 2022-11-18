@@ -1,0 +1,13 @@
+
+@api = http://localhost:3000/aulas
+
+GET {{api}}
+
+###
+GET {{api}}/2022-11-02
+
+###
+GET {{api}}/2022-10-31/2022-11asas
+
+###
+GET {{api}}/Seguridad Informatica/2022-10-31/2023-12-03
