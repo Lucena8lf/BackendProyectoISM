@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
@@ -11,6 +12,8 @@ const notFound = require('./middlewares/notFound.js')
 const handleError = require('./middlewares/handleError')
 
 const app = express();
+
+app.use(cors());
 
 app.use(aulasRoutes)
 
