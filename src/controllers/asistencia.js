@@ -33,7 +33,6 @@ export const checkCredentials = async (req, res, next) => {
         );
       } else if (rowsP[0]["COUNT(*)"] == 1) {
         // Credenciales correctas de profesor
-        console.log("hola");
         res.redirect(
           307,
           `/asistencia/profesor/${req.params.idClase}/${username}`
