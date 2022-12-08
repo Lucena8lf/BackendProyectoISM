@@ -1,5 +1,11 @@
-import {Router} from 'express';
-import {getAulaDia, getAulaRango, getAulaAsignatura} from '../controllers/aulas'
+import { Router } from "express";
+import {
+  getGrados,
+  getAsignaturas,
+  getAulaDia,
+  getAulaRango,
+  getAulaAsignatura,
+} from "../controllers/aulas";
 
 const router = Router();
 
@@ -9,6 +15,38 @@ const router = Router();
  *  name: Aulas
  *  description: Endpoints de las aulas
  */
+
+/**
+ * @swagger
+ * /grados:
+ *  get:
+ *      summary: Obtiene todos los grados disponibles
+ *      responses:
+ *          200:
+ *              description: Success
+ *          400:
+ *              description: SQL Error
+ *      tags: [Aulas]
+ */
+router.get("/grados", getGrados);
+
+/**
+ * @swagger
+ * /{codigoGrado}/asignaturas:
+ *  get:
+ *      summary: Obtiene todas las asignaturas de un determinado grado
+ *      parameters:
+ *          - in: path
+ *            name: codigoGrado
+ *            description: Código del grado que se quieren obtener las asignaturas
+ *      responses:
+ *          200:
+ *              description: Success
+ *          400:
+ *              description: Invalid code used
+ *      tags: [Aulas]
+ */
+router.get("/:codigoGrado/asignaturas", getAsignaturas);
 
 /**
  * @swagger
@@ -26,7 +64,7 @@ const router = Router();
  *              description: Invalid date used
  *      tags: [Aulas]
  */
-router.get('/aulas/:fecha', getAulaDia)
+router.get("/aulas/:fecha", getAulaDia);
 
 /**
  * @swagger
@@ -47,7 +85,7 @@ router.get('/aulas/:fecha', getAulaDia)
  *              description: Invalid date used
  *      tags: [Aulas]
  */
-router.get('/aulas/:fechaInicio/:fechaFin', getAulaRango)
+router.get("/aulas/:fechaInicio/:fechaFin", getAulaRango);
 
 /**
  * @swagger
@@ -71,6 +109,6 @@ router.get('/aulas/:fechaInicio/:fechaFin', getAulaRango)
  *              description: Invalid subject/date used
  *      tags: [Aulas]
  */
-router.get('/aulas/:asignatura/:fechaInicio/:fechaFin', getAulaAsignatura)
+router.get("/aulas/:asignatura/:fechaInicio/:fechaFin", getAulaAsignatura);
 
-export default router
+export default router;

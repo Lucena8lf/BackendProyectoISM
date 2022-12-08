@@ -1,0 +1,19 @@
+@apiAsistencia = http://localhost:3000/asistencia
+
+###
+POST {{apiAsistencia}}/48
+Content-Type: application/json
+
+{
+    "nombre_usuario": "i88kvlme",
+    "password": "poibpmqlpy"
+}
+
+###
+POST {{apiAsistencia}}/48
+Content-Type: application/json
+
+{
+    "nombre_usuario": "i88nrklf",
+    "password": "8e5e4e54ff81184c8a7809cd373b6942d1811a5095ffabb675645a96def46d7b"
+}
