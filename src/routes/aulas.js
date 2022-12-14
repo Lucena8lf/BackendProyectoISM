@@ -100,9 +100,6 @@ router.get("/aulas/:idAula/:fechaInicio/:fechaFin", getAulaRango);
  *      summary: Obtiene las aulas reservadas indicándole una asignatura en un rango de fechas determinado
  *      parameters:
  *          - in: path
- *            name: idAula
- *            description: ID del aula del que se quieren consultar las clases
- *          - in: path
  *            name: asignatura
  *            description: Asignatura para la que han sido reservadas esas clases
  *          - in: path
@@ -119,7 +116,7 @@ router.get("/aulas/:idAula/:fechaInicio/:fechaFin", getAulaRango);
  *      tags: [Aulas]
  */
 router.get(
-  "/aulas/:idAula/:asignatura/:fechaInicio/:fechaFin",
+  "/aulas/asignaturas/:asignatura/:fechaInicio/:fechaFin",
   getAulaAsignatura
 );
 

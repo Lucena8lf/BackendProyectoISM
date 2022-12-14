@@ -11,10 +11,10 @@ GET http://localhost:3000/2/asignaturas
 GET {{apiAulas}}
 
 ###
-GET {{apiAulas}}/2/2022-12-06
+GET {{apiAulas}}/2/2022-12-17
 
 ###
 GET {{apiAulas}}/2/2022-12-01/2022-12-31
 
 ###
-GET {{apiAulas}}/2/Sistemas interactivos/2022-12-01/2022-12-31
+GET {{apiAulas}}/asignaturas/Sistemas Interactivos/2022-12-01/2022-12-31

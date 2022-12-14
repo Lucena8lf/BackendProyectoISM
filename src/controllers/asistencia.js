@@ -38,13 +38,13 @@ export const checkCredentials = async (req, res, next) => {
           `/asistencia/profesor/${req.params.idAula}/${username}`
         );
       } else {
-        res.send({ errMessage: "Usuario y/o contraseña incorrecto" });
+        res.json({ errMessage: "Usuario y/o contraseña incorrecto" });
       }
     } catch (error) {
       next(error);
     }
   } else {
-    res.send({
+    res.json({
       errMessage: "Por favor, introduzca su nombre de usuario y contraseña",
     });
     res.end();
@@ -97,12 +97,17 @@ export const saveAsistenciaProfesor = async (req, res, next) => {
     const [idClase] = await connection.query(new_query, [req.params.idAula]);
 
     if (typeof idClase !== "undefined" && idClase.length > 0) {
-      // Registramos la asistencia del profesor en la clase que nos pasan
-      const result = await connection.query(
-        "UPDATE CLASE SET asistencia = 1 WHERE id = ?;",
-        [idClase[0]["ID"]]
-      );
-      res.sendStatus(204);
+      // Comprobamos si ya se ha registrado
+      if (idClase[0]["asistencia"] === 0) {
+        // Registramos la asistencia del profesor en la clase que nos pasan
+        const result = await connection.query(
+          "UPDATE CLASE SET asistencia = 1 WHERE id = ?;",
+          [idClase[0]["ID"]]
+        );
+        res.sendStatus(204);
+      } else {
+        res.json({ errMessage: "Ya se ha registrado en esta clase" });
+      }
     } else {
       res.json({
         errMessage: "No hay ninguna clase en esta aula actualmente",
