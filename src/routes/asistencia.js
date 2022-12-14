@@ -16,13 +16,13 @@ const router = Router();
 
 /**
  * @swagger
- * /asistencia/{idClase}:
+ * /asistencia/{idAula}:
  *  post:
  *      summary: Comprueba las credenciales del alumno o profesor antes de registrar la presencia
  *      parameters:
  *          - in: path
- *            name: idClase
- *            description: ID de la clase en la que quiere registrar la presencia el alumno o profesor
+ *            name: idAula
+ *            description: ID de la aula en la que quiere registrar la presencia el alumno o profesor
  *      responses:
  *          200:
  *              description: Success
@@ -30,17 +30,17 @@ const router = Router();
  *              description: Invalid id used
  *      tags: [Asistencia]
  */
-router.post("/asistencia/:idClase", checkCredentials);
+router.post("/asistencia/:idAula", checkCredentials);
 
 /**
  * @swagger
- * /asistencia/alumno/{idClase}/{estudianteUsername}:
+ * /asistencia/alumno/{idAula}/{estudianteUsername}:
  *  post:
  *      summary: Registra la asistencia de un alumno en una clase determinada
  *      parameters:
  *          - in: path
  *            name: idClase
- *            description: ID de la clase en la que quiere registrar la presencia el alumno
+ *            description: ID de la aula en la que quiere registrar la presencia el alumno
  *          - in: path
  *            name: studentUsername
  *            description: Nombre de usuario del alumno que quiere registrar la presencia
@@ -52,19 +52,19 @@ router.post("/asistencia/:idClase", checkCredentials);
  *      tags: [Asistencia]
  */
 router.post(
-  "/asistencia/alumno/:idClase/:estudianteUsername",
+  "/asistencia/alumno/:idAula/:estudianteUsername",
   saveAsistenciaAlumno
 );
 
 /**
  * @swagger
- * /asistencia/profesor/{idClase}/{profesorUsername}:
+ * /asistencia/profesor/{idAula}/{profesorUsername}:
  *  post:
  *      summary: Registra la asistencia de un profesor en una clase determinada
  *      parameters:
  *          - in: path
- *            name: idClase
- *            description: ID de la clase en la que quiere registrar la presencia el profesor
+ *            name: idAula
+ *            description: ID de la aula en la que quiere registrar la presencia el profesor
  *          - in: path
  *            name: professorUsername
  *            description: Nombre de usuario del profesor que quiere registrar la presencia
@@ -76,7 +76,7 @@ router.post(
  *      tags: [Asistencia]
  */
 router.post(
-  "/asistencia/profesor/:idClase/:profesorUsername",
+  "/asistencia/profesor/:idAula/:profesorUsername",
   saveAsistenciaProfesor
 );
 

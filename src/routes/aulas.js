@@ -50,13 +50,16 @@ router.get("/:codigoGrado/asignaturas", getAsignaturas);
 
 /**
  * @swagger
- * /aulas/{fecha}:
+ * /aulas/{idAula}/{fecha}:
  *  get:
- *      summary: Obtiene las aulas reservadas indicándole un día específico
+ *      summary: Obtiene las clases de aula indicándole un día específico
  *      parameters:
  *          - in: path
+ *            name: idAula
+ *            description: ID del aula del que se quieren consultar las clases
+ *          - in: path
  *            name: fecha
- *            description: Fecha específica en la que se quiere consultar las aulas
+ *            description: Fecha específica en la que se quiere consultar las clases
  *      responses:
  *          200:
  *              description: Success
@@ -64,14 +67,17 @@ router.get("/:codigoGrado/asignaturas", getAsignaturas);
  *              description: Invalid date used
  *      tags: [Aulas]
  */
-router.get("/aulas/:fecha", getAulaDia);
+router.get("/aulas/:idAula/:fecha", getAulaDia);
 
 /**
  * @swagger
- * /aulas/{fechaInicio}/{fechaFin}:
+ * /aulas/{idAula}/{fechaInicio}/{fechaFin}:
  *  get:
  *      summary: Obtiene las aulas reservadas indicándole un rango de fechas
  *      parameters:
+ *          - in: path
+ *            name: idAula
+ *            description: ID del aula del que se quieren consultar las clases
  *          - in: path
  *            name: fechaInicio
  *            description: Fecha de inicio del rango
@@ -85,17 +91,20 @@ router.get("/aulas/:fecha", getAulaDia);
  *              description: Invalid date used
  *      tags: [Aulas]
  */
-router.get("/aulas/:fechaInicio/:fechaFin", getAulaRango);
+router.get("/aulas/:idAula/:fechaInicio/:fechaFin", getAulaRango);
 
 /**
  * @swagger
- * /aulas/{asignatura}/{fechaInicio}/{fechaFin}:
+ * /aulas/{idAula}/{asignatura}/{fechaInicio}/{fechaFin}:
  *  get:
  *      summary: Obtiene las aulas reservadas indicándole una asignatura en un rango de fechas determinado
  *      parameters:
  *          - in: path
+ *            name: idAula
+ *            description: ID del aula del que se quieren consultar las clases
+ *          - in: path
  *            name: asignatura
- *            description: Asignatura para la que han sido reservadas esas aulas
+ *            description: Asignatura para la que han sido reservadas esas clases
  *          - in: path
  *            name: fechaInicio
  *            description: Fecha de inicio del rango
@@ -109,6 +118,9 @@ router.get("/aulas/:fechaInicio/:fechaFin", getAulaRango);
  *              description: Invalid subject/date used
  *      tags: [Aulas]
  */
-router.get("/aulas/:asignatura/:fechaInicio/:fechaFin", getAulaAsignatura);
+router.get(
+  "/aulas/:idAula/:asignatura/:fechaInicio/:fechaFin",
+  getAulaAsignatura
+);
 
 export default router;
