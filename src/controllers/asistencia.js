@@ -63,9 +63,8 @@ export const saveAsistenciaAlumno = async (req, res, next) => {
 
     // A partir del ID del aula recuperamos el ID de la clase que se está
     // impartiendo en ese aula en ese momento
-    // Se ha tenido en cuenta que todas las clases duran 2 horas!!!
     const [idClase] = await connection.query(
-      "SELECT ID FROM CLASE WHERE codigo_aula = ? and fecha = CURDATE() and hora_inicio >= CURTIME() and hora_fin <= (SELECT ADDTIME(curtime(),TIME('02:00:00')))",
+      "SELECT ID FROM CLASE WHERE codigo_aula = ? and fecha = CURDATE() and CURTIME() between hora_inicio AND hora_fin",
       [req.params.idAula]
     );
 
@@ -92,8 +91,7 @@ export const saveAsistenciaProfesor = async (req, res, next) => {
 
     // Recuperamos la ID de esa clase
     var new_query =
-      "SELECT ID, asistencia FROM CLASE WHERE codigo_aula = ? and fecha = CURDATE() and hora_inicio >= CURTIME() and hora_fin <= (SELECT ADDTIME(curtime(),TIME('02:00:00')))";
-    //"SELECT ID, asistencia FROM CLASE WHERE codigo_aula = ? and hora_inicio >= '16:00' and hora_fin <= (SELECT ADDTIME(curtime(),TIME('02:00:00')))";
+      "SELECT ID, asistencia FROM CLASE WHERE codigo_aula = ? and fecha = CURDATE() and CURTIME() between hora_inicio AND hora_fin";
     const [idClase] = await connection.query(new_query, [req.params.idAula]);
 
     if (typeof idClase !== "undefined" && idClase.length > 0) {
