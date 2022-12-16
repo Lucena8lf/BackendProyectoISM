@@ -95,7 +95,7 @@ router.get("/aulas/:idAula/:fechaInicio/:fechaFin", getAulaRango);
 
 /**
  * @swagger
- * /aulas/{idAula}/{asignatura}/{fechaInicio}/{fechaFin}:
+ * /aulas/asignaturas/{asignatura}/{fechaInicio}/{fechaFin}:
  *  get:
  *      summary: Obtiene las aulas reservadas indicándole una asignatura en un rango de fechas determinado
  *      parameters:

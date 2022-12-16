@@ -1,19 +1,19 @@
 @apiAsistencia = http://localhost:3000/asistencia
 
 ###
-POST {{apiAsistencia}}/82
+POST {{apiAsistencia}}/39
 Content-Type: application/json
 
 {
-    "nombre_usuario": "i84rjicp",
-    "password": "gejcozabbo"
+    "nombre_usuario": "i89rtjgs",
+    "password": "rtttdgflqp"
 }
 
 ###
-POST {{apiAsistencia}}/82
+POST {{apiAsistencia}}/39
 Content-Type: application/json
 
 {
-    "nombre_usuario": "i86mbaeo",
-    "password": "sjihugzcco"
+    "nombre_usuario": "i85ijioe",
+    "password": "qvmyzybadh"
 }

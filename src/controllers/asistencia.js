@@ -27,16 +27,9 @@ export const checkCredentials = async (req, res, next) => {
 
       if (rowsA[0]["COUNT(*)"] == 1) {
         // Creedenciales correctas de alumno
-        res.redirect(
-          307,
-          `/asistencia/alumno/${req.params.idAula}/${username}`
-        );
+        saveAsistenciaAlumno(req, res, next);
       } else if (rowsP[0]["COUNT(*)"] == 1) {
-        // Credenciales correctas de profesor
-        res.redirect(
-          307,
-          `/asistencia/profesor/${req.params.idAula}/${username}`
-        );
+        saveAsistenciaProfesor(req, res, next);
       } else {
         res.json({ errMessage: "Usuario y/o contraseña incorrecto" });
       }
@@ -51,7 +44,7 @@ export const checkCredentials = async (req, res, next) => {
   }
 };
 
-export const saveAsistenciaAlumno = async (req, res, next) => {
+const saveAsistenciaAlumno = async (req, res, next) => {
   try {
     // Recuperamos el DNI del alumno
     const connection = await connect();
