@@ -27,7 +27,7 @@ export const checkCredentials = async (req, res, next) => {
 
       if (rowsA[0]["COUNT(*)"] == 1) {
         // Creedenciales correctas de alumno
-        saveAsistenciaAlumno(req, res, next);
+        saveAsistenciaAlumno(req, res, next, username);
       } else if (rowsP[0]["COUNT(*)"] == 1) {
         saveAsistenciaProfesor(req, res, next);
       } else {
@@ -44,14 +44,14 @@ export const checkCredentials = async (req, res, next) => {
   }
 };
 
-const saveAsistenciaAlumno = async (req, res, next) => {
+const saveAsistenciaAlumno = async (req, res, next, estudianteUsername) => {
   try {
     // Recuperamos el DNI del alumno
     const connection = await connect();
 
     const [rows] = await connection.query(
       "SELECT DNI FROM ALUMNO WHERE nombre_usuario = ?",
-      [req.params.estudianteUsername]
+      [estudianteUsername]
     );
 
     // A partir del ID del aula recuperamos el ID de la clase que se está
