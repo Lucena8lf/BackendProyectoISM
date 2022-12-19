@@ -64,7 +64,7 @@ const saveAsistenciaAlumno = async (req, res, next, estudianteUsername) => {
     if (typeof idClase !== "undefined" && idClase.length > 0) {
       // Registramos la asistencia del alumno en la clase que nos pasan si existe una clase
       const result = await connection.query(
-        "INSERT INTO alumno_clase (ID, DNI) VALUES (?, ?)",
+        "INSERT INTO ALUMNO_CLASE (ID, DNI) VALUES (?, ?)",
         [idClase[0]["ID"], rows[0]["DNI"]]
       );
       res.sendStatus(204);

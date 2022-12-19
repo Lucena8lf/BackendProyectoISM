@@ -14,7 +14,7 @@ const router = Router();
  * @swagger
  * /asistencia/{idAula}:
  *  post:
- *      summary: Comprueba las credenciales del alumno o profesor antes de registrar la presencia
+ *      summary: Registra la presencia de alumnos y profesores en un aula determinada
  *      parameters:
  *          - in: path
  *            name: idAula
